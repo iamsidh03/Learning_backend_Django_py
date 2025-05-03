@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Tutorial</title>
+</head>
+<body>
+    <h1 style="color:blue"> Django tutorial</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        Exercitationem velit odio ratione reprehenderit ea magni, 
+        distinctio cum necessitatibus natus autem alias cumque itaque 
+        officiis pariatur a soluta accusantium? Tenetur, illum.
+    </p>
+    <br>
+
+    {{ peoples }}
+
+    <table border="1">
+        <tr>
+            <th>S.Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Can_Vote</th>
+        </tr>
+        {% for people in peoples %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ people.name }}</td>
+            <td>{{ people.age }}</td>
+            <td {% if people.age|add:0 >= 18 %} style="background:red" {% endif %}>
+                {% if people.age|add:0 >= 18 %}
+                    👍
+                {% else %}
+                    👎
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        {% if "Eggplant" in vegetables%}
+            <h1>Yes Available</h1>
+        {% elif "Tomato" in vegetables %}
+            Yes Available
+        {% else %}
+            not Available
+        {% endif %}
+    </p>
+    <a href ="/about/">about</a>
+    |
+    <a href ="/contact/">contact</a>
+</body>
+</html>
+
